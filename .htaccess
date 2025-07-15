@@ -1,0 +1,46 @@
+# Apache configuration file
+# http://httpd.apache.org/docs/2.2/mod/quickreference.html
+
+# Turning on the rewrite engine is necessary for the following rules and
+# features. "+FollowSymLinks" must be enabled for this to work symbolically.
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+</IfModule>
+
+# For all files not found in the file system, reroute the request to the
+# "index.php" front controller, keeping the query string intact
+<IfModule mod_rewrite.c>
+	#Force SSL page
+	RewriteEngine On
+	RewriteCond %{HTTPS} off
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+#<IfModule mod_rewrite.c>
+	RewriteEngine on
+	#Directory to parameter
+	RewriteRule ^([^/]+)?$ index.html?$1 [L,QSA]
+#</IfModule>
+
+#<IfModule mod_rewrite.c>
+#	RewriteEngine on
+	#deny from all
+	#AuthType Basic
+	#AuthUserFile /home/master/www/igoto.org/.htpasswd
+	#AuthName Test
+	#require valid-user
+	#satisfy any
+#</IfModule>
+
+#<IfModule mod_rewrite.c>
+#	RewriteEngine on
+	#Domain to parameter
+	#RewriteCond %{HTTP_HOST} !^www\.geoindex\.org$ [NC]
+	#RewriteCond %{HTTP_HOST} ^([^.]+)\.geoindex\.org$ [NC]
+	#RewriteRule ^/?(.*)$ $1?c=%1 [QSA,L,NE]
+
+	#AddType application/x-httpd-php .html .htm .php
+	#php_value auto_append_file '../advertising/public_html/head_foot.php'
+#</IfModule>

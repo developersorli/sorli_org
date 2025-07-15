@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.sorli.sendgeosms",
+      "sha256_cert_fingerprints": [
+        "19:E8:9B:66:1C:33:2F:ED:9F:F6:C9:83:31:7B:99:26:BF:FF:32:EA:B4:FC:10:94:EB:9D:29:A0:89:B7:1D:70"
+      ]
+    }
+  }
+]

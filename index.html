@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN">
+<html>
+<head>
+    <style type="text/css">
+html, body, #map_canvas {
+    width: 100%;
+    height: 99%;
+    margin: 0;
+    padding: 0;
+}
+#map_canvas {
+    position: relative;
+}
+    </style>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <script type="module" charset="utf-8">
+    import { fun_decode18or36 } from "./teavm/classes.js"      
+
+    document.body.onload = () => {
+        let decode18or36Button = document.getElementById("decode18or36");
+        let queryArgInput = document.getElementById("query-arg");
+        decode18or36Button.onclick = () => {
+			var div = document.createElement("div");
+			let out = fun_decode18or36(queryArgInput.value);
+			if (out.includes("<br>")) {
+				document.getElementById("output").innerHTML = out;
+			} else {
+				window.location.replace(out);
+			}
+        }
+    };
+
+    var queryString = window.location.search;
+		
+	if (queryString === "") {
+	} else {
+		let queryArgInput = queryString.substring(1);
+		document.getElementById("query-arg").value = queryArgInput;
+		
+		let out = fun_decode18or36(queryArgInput);
+		if (out.includes("<br>")) {
+			document.getElementById("output").innerHTML = out;
+		} else {
+			window.location.replace(out);
+		}
+	}
+	
+</script>
+</head>
+<body>
+<BR><BR>
+<center><p><h3>
+</h3><p></center>
+<center><p><h3>
+<button id="decode18or36">GeoIndex search:</button><input id="query-arg" type="text" value="">
+<p id="output"></p>
+</h3><p></center>
+<BR>
+<center><p><h3>
+Avalible recovered indexes
+</h3><p></center>
+<BR>
+<center><p>You can download app:<p></center>
+<center><a href='https://play.google.com/store/apps/details?id=org.sorli.sendgeosms&hl=en'><img src='./images/download_android_play.png' height='39px' width='113px'></a>
+<center><p><h3>
+<BR>		
+<center><p>
+<hr><h6><a href=http://sourceforge.net/projects/sorli><i>sorli</i></a>
+<a href=http://www.sorli.org/>geoindex</a> &copy; 2014</h6>
+<p></center>
+</body>
+</html>
